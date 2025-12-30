@@ -17,8 +17,25 @@ class Student(IStudent):
     def __post_init__(self) -> None:
         if not self.full_name.strip():
             raise ValueError("ПІБ студента не може бути порожнім.")
-        if "@" not in self.email or not self.email.strip():
+
+        email = self.email.strip()
+
+        # Проста, але адекватна валідація:
+        # - рівно один '@'
+        # - є частина до '@' і після '@'
+        # - у домені є крапка (example.com)
+        if not email:
             raise ValueError("Некоректний email студента.")
+        if email.count("@") != 1:
+            raise ValueError("Некоректний email студента.")
+
+        local_part, domain_part = email.split("@")
+        if not local_part or not domain_part:
+            raise ValueError("Некоректний email студента.")
+        if "." not in domain_part or domain_part.startswith(".") or domain_part.endswith("."):
+            raise ValueError("Некоректний email студента.")
+
+        self.email = email
 
     def get_student_info(self) -> str:
         return (
