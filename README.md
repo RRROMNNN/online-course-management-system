@@ -90,3 +90,5 @@ CourseManagementSystem/
 - виконання merge та розв’язання конфліктів;
 - тестування реалізованих компонентів.
 Rebase demo: change in main branch
+
+Cherry-pick demo: change from source branch
