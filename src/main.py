@@ -19,7 +19,7 @@ def main() -> None:
     print(student.get_student_info())
 
     course.update_status("Completed")
-    print("Новий статус курсу:", course.get_status())
+    print("Новий :", course.get_status())
 
     print(instructor.get_instructor_info())
 
