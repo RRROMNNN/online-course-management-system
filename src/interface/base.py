@@ -4,42 +4,45 @@ from abc import ABC, abstractmethod
 
 
 class ICourse(ABC):
-    """Интерфейс учебного курса."""
+    """Інтерфейс навчального курсу."""
 
     @abstractmethod
     def get_course_info(self) -> str:
-        """Вернуть строку с информацией о курсе."""
+        """Повертає рядок з інформацією про навчальний курс."""
         raise NotImplementedError
+
 
     @abstractmethod
     def get_status(self) -> str:
-        """Вернуть текущий статус курса."""
+        """Повертає поточний статус курсу."""
         raise NotImplementedError
+
 
     @abstractmethod
     def update_status(self, new_status: str) -> None:
-        """Обновить статус курса."""
+        """Оновлює статус навчального курсу."""
         raise NotImplementedError
 
 
 class IStudent(ABC):
-    """Интерфейс студента."""
+    """Інтерфейс студента."""
 
     @abstractmethod
     def get_student_info(self) -> str:
-        """Вернуть строку с информацией о студенте."""
+        """Повертає рядок з інформацією про студента."""
         raise NotImplementedError
+
 
     @abstractmethod
     def enroll_course(self, course_name: str) -> None:
-        """Записать студента на курс."""
+        """Реєструє студента на навчальний курс."""
         raise NotImplementedError
 
 
 class IInstructor(ABC):
-    """Интерфейс преподавателя."""
+    """Інтерфейс викладача."""
 
     @abstractmethod
     def get_instructor_info(self) -> str:
-        """Вернуть строку с информацией о преподавателе."""
+        """Повертає рядок з інформацією про викладача."""
         raise NotImplementedError
