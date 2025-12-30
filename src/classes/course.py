@@ -8,7 +8,7 @@ from src.interfaces.base import ICourse
 
 @dataclass
 class Course(ICourse):
-    """Класс Course реализует интерфейс ICourse и хранит информацию о курсе."""
+    """Клас Course реалізує ICourse та зберігає інформацію про навчальний курс."""
 
     ALLOWED_STATUSES: ClassVar[Set[str]] = {"Active", "Completed", "Archived"}
 
@@ -19,25 +19,25 @@ class Course(ICourse):
 
     def __post_init__(self) -> None:
         if not self.name.strip():
-            raise ValueError("Название курса не может быть пустым.")
+            raise ValueError("Назва курсу не може бути порожньою.")
         if not self.description.strip():
-            raise ValueError("Описание курса не может быть пустым.")
+            raise ValueError("Опис курсу не може бути порожнім.")
         if self.duration_hours <= 0:
-            raise ValueError("Длительность курса должна быть больше 0.")
+            raise ValueError("Тривалість курсу повинна бути більшою за 0.")
         self._validate_status(self.status)
 
     def _validate_status(self, status: str) -> None:
         if status not in self.ALLOWED_STATUSES:
             raise ValueError(
-                f"Некорректный статус: {status}. "
-                f"Допустимые: {sorted(self.ALLOWED_STATUSES)}"
+                f"Некоректний статус: {status}. "
+                f"Допустимі: {sorted(self.ALLOWED_STATUSES)}"
             )
 
     def get_course_info(self) -> str:
         return (
             f"Курс: {self.name}. "
-            f"Описание: {self.description}. "
-            f"Длительность: {self.duration_hours} ч."
+            f"Опис: {self.description}. "
+            f"Тривалість: {self.duration_hours} год."
         )
 
     def get_status(self) -> str:
